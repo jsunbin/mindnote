@@ -9,16 +9,8 @@ def page_list(request):
     return render(request,'diary/page_list.html', context)
 
 
+def page_detail(request, page_id):
+    page = Page.objects.get(id=page_id)
+    context = {"page" : page}
+    return render(request, 'diary/page_detail.html', context)
 
-
-# from .models import Post
-# Create your views here.
-
-# def post_list(request):
-#     # 변수 posts에 모든 Post를 가져와서 넣어주고
-#     posts = Post.objects.all()
-#     # context에 사전형으로 담아서 템플릿으로 전달할 수 있도록 함
-#     context = {"posts": posts}
-
-#     # request를 받아서, posts의 post_list.html을 렌더
-#     return render(request, 'posts/post_list.html', context)

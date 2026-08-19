@@ -1,22 +1,24 @@
 {% extends "./base.html" %}
 
-{% block filename %}
+{% block page_list %}
   <h2>일기 목록 페이지</h2>
 
   <ul>
       <!-- 하나의 글은 여기서부터 -->
       {% for page in page_list %}
         <li>
-          <div class="date">
+          <a href="diary/page/{{page.id}}/">
+            <div class="date">
               <span>{{page.dt_created|date:"d"}}</span>
               <p>{{page.dt_created|date:"M"}}</p>
-          </div>
-          <h2>{{page.title}}</h2>
-          <div class="score">
-              <p>감정점수</p>
-              <span>{{page.score}}</span>
-          </div>
+            </div>
+            <h2>{{page.title}}</h2>
+            <div class="score">
+                <p>감정점수</p>
+                <span>{{page.score}}</span>
+            </div>
+          </a>
         </li>
       {% endfor %}
   </ul>
-{% endblock filename %}
+{% endblock page_list %}
