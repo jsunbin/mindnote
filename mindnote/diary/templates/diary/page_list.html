@@ -7,7 +7,7 @@
       <!-- 하나의 글은 여기서부터 -->
       {% for page in page_list %}
         <li>
-          <a href="diary/page/{{page.id}}/">
+          <a href="{% url 'page-detail' page.id %}">
             <div class="date">
               <span>{{page.dt_created|date:"d"}}</span>
               <p>{{page.dt_created|date:"M"}}</p>
