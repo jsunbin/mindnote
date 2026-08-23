@@ -19,15 +19,11 @@ def info(request):
 
 def page_create(request):
     if request.method == "POST":
-        new_page = Page( 
-            title=request.POST['title'],  
-            content=request.POST['content'],
-            feeling=request.POST['feeling'],
-            score=request.POST['score'],
-            dt_created=request.POST['dt_created']
-        )
-        new_page.save()
+        page_form = PageForm(request.POST)
+        new_page = page_form.save()
+
         return redirect('page-detail', page_id=new_page.id)
     else:
         page_form = PageForm()
+        
         return render(request, 'diary/page_form.html', {'form' : page_form})
