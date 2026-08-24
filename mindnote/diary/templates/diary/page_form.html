@@ -7,25 +7,37 @@
 
           <div class="input input-date">
               <p>날짜</p>
-              <p>{{form.dt_created}}</p>
+              {{form.dt_created}}
           </div>
 
           <div class="input input-score">
               <p>감정 점수</p>
               <p>{{form.score}}</p>
+              {% for error in form.score.errors %}
+                <span>{{error}}</span>
+              {% endfor %}
             </div>
             
             <div class="input input-title">
               <p>제목</p>
-              <p>{{form.title}}</p>
+              {{form.title}}
+              {% for error in form.title.errors %}
+                <span>{{error}}</span>
+              {% endfor %}
             </div>
             
             <div class="input input-state">
               <p>상태</p>
-              <p>{{form.feeling}}</p>
+              {{form.feeling}}
+              {% for error in form.feeling.errors %}
+                <span>{{error}}</span>
+              {% endfor %}
             </div>
             
-            <p>{{form.content}}</p>
+            {{form.content}}
+            {% for error in form.content.errors %}
+              <span>{{error}}</span>
+            {% endfor %}
 
           <div class="post-btn">
               <input type="submit" value="작성완료">
