@@ -41,3 +41,11 @@ def page_update(request, page_id):
 
     return render(request, 'diary/page_form.html', {'form' : form})
 
+
+def page_delete(request, page_id):
+    object = Page.objects.get(id=page_id)
+    if request.method == 'POST':
+        object.delete()
+        return redirect('page-list')
+    else:
+        return render(request, 'diary/page_confirm_delete.html', {'object' : object})
