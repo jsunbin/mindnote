@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect
-from django.core.paginator import Paginator
+from django.shortcuts import render
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.urls import reverse
 from .models import Page
@@ -10,7 +9,6 @@ from .forms import PageForm
 class PageListView(ListView):
     model = Page
     template_name = 'diary/page_list.html'
-    # context_object_name = 'page'
     ordering = ['-dt_created']
     paginate_by = 8
     page_kwarg = 'page'
@@ -20,7 +18,6 @@ class PageDetailView(DetailView):
     model = Page
     template_name = 'diary/page_detail.html'
     pk_url_kwarg = 'page_id'
-    # context_object_name = 'page'
 
 
 def info(request):
@@ -59,4 +56,3 @@ class PageDeleteView(DeleteView):
 def index(request):
     return render(request, 'diary/index.html')
 
-    
